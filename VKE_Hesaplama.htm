@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vücut Kitle Endeksi</title>
+
+    <script>
+        function VKE_Hesapla() {
+            var boy = document.getElementById("boy").value;
+            var kilo = document.getElementById("kilo").value;
+            if (boy == "") {
+                alert("Boy verisi girilmeden hesaplama yapılamaz.");
+            }
+            else if (kilo == "") {
+                alert("Kilo verisi girilmeden hesaplama yapılamaz.");
+
+            }
+            else if (boy < 50 || boy > 250) {
+                alert("Geçersiz bir veri girildi. Girdiğiniz değerlerin doğruluğunu kontrol edin..(Boy(cm) geçerlilik aralığı : 50 - 250)");
+            }
+            else if (kilo < 0 || kilo > 400) {
+                alert("Geçersiz bir veri girildi. Girdiğiniz değerlerin doğruluğunu kontrol edin..(Kilo(kg) geçerlilik aralığı : 0-400)");
+            }
+            
+            else if (boy >= 50 && boy <= 250 && kilo >= 0 && kilo <= 400) {
+                var sonuc = kilo / (boy / 100 * boy / 100);
+            }
+            else
+             {
+                alert("Geçersiz bir veri girildi. Girdiğiniz değerlerin doğruluğunu kontrol edin..(Sayısal değer girin)");
+            }
+            
+            
+            
+            document.getElementById("sonuc").value = sonuc;
+
+        }
+    </script>
+
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Vücut Kitle Endeksi Hesaplama Aracı</legend>
+            <label for="boy">Boy :</label>
+            <input type="text" id="boy" name="boy"><br><br>
+            <label for="kilo">Kilo :</label>
+            <input type="text" id="kilo" name="kilo"><br><br>
+            <label for="cinsiyet1">Kadın </label>
+            <input type="radio" id="cinsiyet" name="cinsiyet">
+            <label for="cinsiyet2">Erkek </label>
+            <input type="radio" id="cinsiyet2" name="cinsiyet"><br><br>
+            <label for="yas">Yaş :</label>
+            <select id="yas" name="yas">
+                <option>15 yaş altı</option>
+                <option>15 - 20 yaş</option>
+                <option>20 - 30 yaş</option>
+                <option>30+</option>
+            </select>
+            <br><br>
+            <input type="checkbox" id="metin" name="metin"><br>
+            <label>Buradaki sonucun tahmini bir sonuç olduğunu kabul ediyorum.</label><br><br>
+            <input type="button" value="VKE Hesapla" onclick="VKE_Hesapla()">
+            <br><br>
+            <input type="text" id="sonuc" name="sonuc" value="-">
+        </fieldset>
+    </form>
+
+</body>
+</html>
